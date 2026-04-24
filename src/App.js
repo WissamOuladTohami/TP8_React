@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import FetchData from './FetchData';
+import AxiosData from './AxiosData';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+    <main className="App">
+      <section className="hero">
+        <p className="hero-badge">✨ React + API Playground ✨</p>
+        <h1>TP - Consommer une API avec React 🌈</h1>
+        <p className="hero-text">
+          Deux facons de recuperer des donnees en React: <strong>fetch()</strong> et
+          <strong> axios</strong>, avec une interface plus vivante, coloree et animee.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      </section>
+
+      <section className="cards-grid">
+        <FetchData />
+        <AxiosData />
+      </section>
+    </main>
   );
 }
 

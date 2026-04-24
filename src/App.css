@@ -1,38 +1,191 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  position: relative;
   min-height: 100vh;
+  padding: 48px 20px 64px;
+  text-align: center;
+  color: #1f2440;
+}
+
+.App::before,
+.App::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(18px);
+  opacity: 0.45;
+  z-index: -1;
+}
+
+.App::before {
+  width: 280px;
+  height: 280px;
+  top: 40px;
+  left: -70px;
+  background: #ff8f70;
+  animation: floatBlob 12s ease-in-out infinite;
+}
+
+.App::after {
+  width: 320px;
+  height: 320px;
+  right: -90px;
+  bottom: 30px;
+  background: #5bd5ff;
+  animation: floatBlob 14s ease-in-out infinite reverse;
+}
+
+.hero {
+  max-width: 820px;
+  margin: 0 auto 32px;
+  padding: 32px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 24px 60px rgba(31, 36, 64, 0.16);
+  backdrop-filter: blur(12px);
+  animation: slideUp 0.8s ease;
+}
+
+.hero-badge {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffcd70, #ff8f70);
+  color: #43220d;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.05;
+}
+
+.hero-text {
+  max-width: 680px;
+  margin: 18px auto 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #3f4568;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.data-card {
+  padding: 28px 24px;
+  border-radius: 26px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 24px 40px rgba(31, 36, 64, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  animation: slideUp 0.9s ease both;
+}
+
+.fetch-card {
+  background-image: linear-gradient(180deg, rgba(255, 229, 190, 0.95), rgba(255, 255, 255, 0.82));
+}
+
+.axios-card {
+  background-image: linear-gradient(180deg, rgba(201, 240, 255, 0.95), rgba(255, 255, 255, 0.82));
+}
+
+.card-head {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.card-head h2 {
+  margin: 0;
+  font-size: 1.5rem;
 }
 
-@keyframes App-logo-spin {
+.card-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(31, 36, 64, 0.08);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.card-description {
+  margin: 0 0 18px;
+  color: #545b80;
+  line-height: 1.6;
+}
+
+.data-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.data-list li {
+  margin-bottom: 12px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(31, 36, 64, 0.08);
+  transform: translateY(0);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.data-list li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 24px rgba(31, 36, 64, 0.12);
+}
+
+.status-text {
+  margin: 12px 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #3f4568;
+}
+
+.error-text {
+  color: #b42318;
+}
+
+@keyframes slideUp {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(24px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatBlob {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(20px, -24px, 0) scale(1.08);
+  }
+}
+
+@media (max-width: 820px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-head {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
