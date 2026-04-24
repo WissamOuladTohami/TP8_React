@@ -87,8 +87,10 @@ Ce TP permet de pratiquer:
 - la gestion des erreurs
 - l'appel d'API en React
 
-## API utilisee
+## Vidéo Démonstratif :
 
-Les donnees proviennent de l'API gratuite:
 
-`https://jsonplaceholder.typicode.com/`
+
+https://github.com/user-attachments/assets/04dfcb7e-a9f8-4fa9-8162-6a4d0ad8e2ec
+
+
